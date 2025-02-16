@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>伊斯頓資訊企業社 | 專業IT解決方案</title>
+    
+    <!-- 樣式與字體 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <!-- 圖標庫 -->
+    <script src="https://kit.fontawesome.com/your-kit-id.js"></script>
+    
+    <style>
+        /* 整個 avatar-box 美化 */
+        .avatar-box {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Swiper 容器設置 */
+        .swiper-container {
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .swiper-wrapper {
+            display: flex;
+        }
+
+        .swiper-slide {
+            display: flex;
+            justify-content: center;
+        }
+
+        .service-card {
+            width: 30%;
+            flex-shrink: 0;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        /* Swiper navigation buttons */
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: #007bff;
+        }
+
+    </style>
+</head>
+<body class="bg-gray-50">
+    
+<!-- 固定導航欄 -->
+<nav class="fixed w-full bg-white shadow-md z-50">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
+        <h1 class="text-2xl font-bold ">伊斯頓資訊企業社</h1>
+        <div class="ml-12 flex space-x-8">
+            <a href="#services" class="text-gray-600 hover:">服務項目</a>
+            <a href="#industry" class="text-gray-600 hover:">產業方案</a>
+            <a href="#clients" class="text-gray-600 hover:">客戶實例</a>
+            <a href="#contact" class="text-gray-600 hover:">聯絡我們</a>
+        </div>
+    </div>
+</nav>
+
+<!-- 服務展示 -->
+<section class="pt-24 pb-16">
+    <div class="max-w-7xl mx-auto">
+        <div class="avatar-box w-full md:w-5/6 mx-auto" data-controller="responsive-image">
+            <h3 class="text-3xl font-bold mb-4">資訊軟體服務</h3>
+            <p class="text-gray-600 mb-6">客製化系統開發｜ERP整合方案｜雲端遷移服務</p>
+    
+            <!-- Swiper 容器 -->
+            <div class="swiper-container relative">
+                <div class="swiper-wrapper">
+                    <!-- 服務卡片 -->
+                    <div class="swiper-slide">
+                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
+                            <img src="images/software-icon.png" alt="軟體服務" class="w-24 h-auto object-contain">
+                            <p class="text-sm">企業級應用程式開發</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
+                            <img src="images/cloud-icon.png" alt="雲端服務" class="w-24 h-auto object-contain">
+                            <p class="text-sm">混合雲部署規劃</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
+                            <img src="images/security-icon.png" alt="資安服務" class="w-24 h-auto object-contain">
+                            <p class="text-sm">資安防護解決方案</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
+                            <img src="images/Data processing services industry.png" alt="資訊服務類" class="w-24 h-auto object-contain">
+                            <p class="text-sm">資料處理服務業</p>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
+                            <img src="images/Retail Sale of Electrical Appliances.png" alt="硬體設備類" class="w-24 h-auto object-contain">
+                            <p class="text-sm">電器零售業</p>
+                        </div>
+                    </div>
+                </div>
+    
+                <!-- Swiper 導航按鈕 (Positioned inside the swiper container) -->
+                <div class="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-green-700 text-white rounded-full flex items-center justify-center shadow-md hover:bg-blue-700">
+                </div>
+                <div class="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-green-700 text-white rounded-full flex items-center justify-center shadow-md hover:bg-blue-700">
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</section>
+
+
+<!-- 業務分類區塊 -->
+<main class="max-w-7xl mx-auto px-6 py-20">
+    
+    <!-- 資訊服務類 -->
+    <section id="software" class="mb-20 scroll-mt-24" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-8 ">資訊服務類</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">資訊軟體服務業</h3>
+                <p class="text-gray-600">客製化系統開發、軟體生命周期管理、技術支援服務</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">資料處理服務業</h3>
+                <p class="text-gray-600">大數據清洗分析、資料庫優化、AI模型訓練數據處理</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 硬體設備類 -->
+    <section id="hardware" class="mb-20 scroll-mt-24" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-8 ">硬體設備類</h2>
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">電腦設備安裝業</h3>
+                <p class="text-gray-600">機房建置｜網路佈線｜伺服器架設</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">事務性機器設備零售業</h3>
+                <p class="text-gray-600">商用印表機｜複合機｜專業級掃描設備</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">電器零售業</h3>
+                <p class="text-gray-600">企業級電子設備｜節能家電解決方案</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 通訊服務類 -->
+    <section id="telecom" class="mb-20 scroll-mt-24" data-aos="fade-up">
+        <h2 class="text-3xl font-bold mb-8 ">通訊服務類</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">電信業務門號代辦業</h3>
+                <p class="text-gray-600">企業門號批量申辦｜資費方案優化｜跨國通訊整合</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-lg">
+                <h3 class="text-xl font-bold mb-4">電子資訊供應服務業</h3>
+                <p class="text-gray-600">物聯網解決方案｜5G應用整合｜智慧城市系統</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 其他保留區塊（客戶案例、聯絡表單等） -->
+    <!-- ... 先前提供的客戶案例輪播、聯絡表單等代碼 ... -->
+
+</main>
+
+<!-- 腳注 -->
+<footer class="bg-gray-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-6 text-center">
+        <p class="mb-4">© 2024 伊斯頓資訊企業社 版權所有</p>
+        <div class="flex justify-center space-x-6">
+            <a href="#" class="hover:text-blue-400">隱私權政策</a>
+            <a href="#" class="hover:text-blue-400">服務條款</a>
+            <a href="#" class="hover:text-blue-400">人才招募</a>
+        </div>
+    </div>
+</footer>
+
+<!-- 腳本 -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+
+// 初始化 Swiper 輪播
+const serviceSwiper = new Swiper('.swiper-container', {
+    slidesPerView: 3,  // Default: Shows 3 cards
+    spaceBetween: 20,   // Spacing between items
+    loop: true,         // Infinite loop
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev'
+    },
+    breakpoints: {
+        768: { 
+            slidesPerView: 3  // Displays 3 cards for tablets and above
+        },
+        480: { 
+            slidesPerView: 1  // Displays 1 card for phones
+        }
+    },
+    effect: 'coverflow', // Apply coverflow effect
+    coverflowEffect: {
+        rotate: 30,        // Angle of rotation
+        slideShadows: false
+    }
+});
+
+    // 初始化 AOS 滾動動畫
+    AOS.init({ duration: 800, once: true });
+
+        // 導航欄滾動效果
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('nav-shadow');
+            } else {
+                nav.classList.remove('nav-shadow');
+            }
+        });
+
+        
+</script>
+
+</body>
+</html>
