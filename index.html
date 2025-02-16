@@ -1,245 +1,513 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-Hant-TW">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>伊斯頓資訊企業社 | 專業IT解決方案</title>
-    
+    <title>先鋒科技 - 專業服務解決方案</title>
+
     <!-- 樣式與字體 -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    
-    <!-- 圖標庫 -->
-    <script src="https://kit.fontawesome.com/your-kit-id.js"></script>
+
     
     <style>
-        /* 整個 avatar-box 美化 */
-        .avatar-box {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 15px;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+        
+        section h1 {
+            font-size: 2em; /* Adjust the value as needed */
+            font-weight: bold;
+            padding-bottom: 0.5em;
 
-        /* Swiper 容器設置 */
-        .swiper-container {
-            width: 100%;
+          }
+        /* 全屏輪播樣式 */
+        .carousel {
+            position: relative;
+            height: 50vh; /* 改成視窗高度的三分之一 */
             overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .swiper-wrapper {
+
+        .slides-container {
             display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 100%;
         }
 
-        .swiper-slide {
-            display: flex;
-            justify-content: center;
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
         }
 
-        .service-card {
-            width: 30%;
-            flex-shrink: 0;
-            background: white;
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        .slide-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(0.7);
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             text-align: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Swiper navigation buttons */
-        .swiper-button-prev,
-        .swiper-button-next {
-            color: #007bff;
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.3);
+            border: none;
+            padding: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .nav-button:hover {
+            background: rgba(255,255,255,0.5);
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        .pagination {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .pagination-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .pagination-dot.active {
+            background: #fff;
+            transform: scale(1.2);
+        }
+        .about-section {
+            padding: 30px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .company-description {
+          margin-bottom: 1.5em;
+        }
+
+        /* 分類展示區樣式 */
+        .services-section {
+            padding: 20px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #2d3748;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* For larger screens, force 3 columns */
+        @media (min-width: 1024px) {
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        
+        
+        .category-card {
+            outline: 2px solid #ADD8E6; /* Light blue outline */
+            outline-offset: -2px; 
+            background: white;
+            border-radius: 7px;
+            padding: 1.5em;
+            display: flex;
+            flex-direction: row;   /* change to row for horizontal layout */
+            align-items: center;    /* vertically center the content */
+            transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+        }
+        .category-card .category-image {
+            width: 20%;      /* set a fixed width (adjust as needed) */
+            height: auto;      /* maintain aspect ratio */
+            margin-right: 20px; /* space between the image and the text */
+        }
+        .category-content {
+            flex: 1;  /* allows the content to fill the available space */
+        }
+        .category-content h3 {
+            font-weight: bold;
+            font-size: 1.2em;
+          }
+                                  
+
+        
+        .card-content h3 {
+            font-size: 1.5rem;
+            color: #1a365d;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .card-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .tech-stack {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 1rem;
+        }
+        
+        .stack-column h4 {
+            color: #2d3748;
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .stack-column ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .stack-column li {
+            color: #4a5568;
+            font-size: 0.9rem;
+            padding: 4px 0;
+        }
+        
+        .consult-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            text-align: center;
+            background: #2563eb;
+            color: white;
+            border-radius: 6px;
+            margin-top: 2rem;
+            transition: background 0.3s;
+        }
+        
+        .consult-btn:hover {
+            background: #1d4ed8;
+        }
+        
+        .feature-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .feature-tags span {
+            background: #f7fafc;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .slide-content{
+            font-size:5vw
+        }
+
+
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+        }
+        .contact-section {
+            padding: 30px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+
+        .consult-section {
+            padding: 30px 30px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
     </style>
 </head>
 <body class="bg-gray-50">
     
-<!-- 固定導航欄 -->
-<nav class="fixed w-full bg-white shadow-md z-50">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
-        <h1 class="text-2xl font-bold ">伊斯頓資訊企業社</h1>
-        <div class="ml-12 flex space-x-8">
-            <a href="#services" class="text-gray-600 hover:">服務項目</a>
-            <a href="#industry" class="text-gray-600 hover:">產業方案</a>
-            <a href="#clients" class="text-gray-600 hover:">客戶實例</a>
-            <a href="#contact" class="text-gray-600 hover:">聯絡我們</a>
+    <!-- 固定導航欄 -->
+    <nav class="fixed w-full bg-white shadow-md z-50">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex items-center">
+            <h1 class="text-2xl font-bold ">伊斯頓資訊企業社</h1>
+            <div class="ml-12 flex space-x-8">
+                <a href="#services" class="text-gray-600 hover:">服務項目</a>
+                <a href="#industry" class="text-gray-600 hover:">產業方案</a>
+                <a href="#clients" class="text-gray-600 hover:">客戶實例</a>
+                <a href="#contact-section" class="text-gray-600 hover:">聯絡我們</a>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<!-- 服務展示 -->
-<section class="pt-24 pb-16">
-    <div class="max-w-7xl mx-auto">
-        <div class="avatar-box w-full md:w-5/6 mx-auto" data-controller="responsive-image">
-            <h3 class="text-3xl font-bold mb-4">資訊軟體服務</h3>
-            <p class="text-gray-600 mb-6">客製化系統開發｜ERP整合方案｜雲端遷移服務</p>
-    
-            <!-- Swiper 容器 -->
-            <div class="swiper-container relative">
-                <div class="swiper-wrapper">
-                    <!-- 服務卡片 -->
-                    <div class="swiper-slide">
-                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
-                            <img src="images/software-icon.png" alt="軟體服務" class="w-24 h-auto object-contain">
-                            <p class="text-sm">企業級應用程式開發</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
-                            <img src="images/cloud-icon.png" alt="雲端服務" class="w-24 h-auto object-contain">
-                            <p class="text-sm">混合雲部署規劃</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
-                            <img src="images/security-icon.png" alt="資安服務" class="w-24 h-auto object-contain">
-                            <p class="text-sm">資安防護解決方案</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
-                            <img src="images/Data processing services industry.png" alt="資訊服務類" class="w-24 h-auto object-contain">
-                            <p class="text-sm">資料處理服務業</p>
-                        </div>
-                    </div>
-                    <div class="swiper-slide">
-                        <div class="service-card w-64 bg-white p-6 rounded-2xl shadow-md flex flex-col items-center justify-center space-y-4">
-                            <img src="images/Retail Sale of Electrical Appliances.png" alt="硬體設備類" class="w-24 h-auto object-contain">
-                            <p class="text-sm">電器零售業</p>
-                        </div>
-                    </div>
-                </div>
-    
-                <!-- Swiper 導航按鈕 (Positioned inside the swiper container) -->
-                <div class="swiper-button-prev absolute left-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-green-700 text-white rounded-full flex items-center justify-center shadow-md hover:bg-blue-700">
-                </div>
-                <div class="swiper-button-next absolute right-0 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-green-700 text-white rounded-full flex items-center justify-center shadow-md hover:bg-blue-700">
+    <!-- 全屏輪播 -->
+    <div class="carousel">
+        <div class="slides-container">
+            <!-- 每個服務項目輪播頁 -->
+            <div class="slide">
+                <img src="service images/資訊科技與軟體服務.jpg" class="slide-image" alt="資訊科技與軟體服務">
+                <div class="slide-content">
+                    <h2>資訊科技與軟體服務</h2>
+                    <!-- <p>專業級資訊科技與軟體服務維護與即時更新</p> -->
                 </div>
             </div>
-        </div>
+            <div class="slide">
+                <img src="service images/硬體設備與安裝.jpg" class="slide-image" alt="硬體設備與安裝">
+                <div class="slide-content">
+                    <h2>硬體設備與安裝</h2>
+                    <!-- <p>企業級硬體設備與安裝</p> -->
+                </div>
+            </div>
+            <div class="slide">
+                <img src="service images/軟體銷售與分銷.jpg" class="slide-image" alt="軟體銷售與分銷">
+                <div class="slide-content">
+                    <h2>軟體銷售與分銷</h2>
+                    <!-- <p>企業級軟體銷售與分銷方案</p> -->
+                </div>
+            </div>
+            <div class="slide">
+                <img src="service images/電信與通訊服務.jpg" class="slide-image" alt="電信與通訊服務">
+                <div class="slide-content">
+                    <h2>電信與通訊服務</h2>
+                    <!-- <p>企業級電信與通訊服務</p> -->
+                </div>
+            </div>
+            <div class="slide">
+                <img src="service images/企業顧問與管理.jpg" class="slide-image" alt="企業顧問與管理">
+                <div class="slide-content">
+                    <h2>企業顧問與管理</h2>
+                    <!-- <p>企業顧問與管理</p> -->
+                </div>
+            </div>
+                </div>
+
+        <!-- 導航按鈕 -->
+        <button class="nav-button prev">❮</button>
+        <button class="nav-button next">❯</button>
+
+        <!-- 分頁指示器 -->
+        <div class="pagination"></div>
     </div>
+
+    <!-- About us -->
+    <section class="about-section">
+        <h1>關於我們</h1>
+        <!-- <br> -->
+        <!-- <h2 class="company-name">伊斯頓資訊企業社</h2> -->
+        <p class="company-description">
+          <b>伊斯頓資訊企業社</b>是一家多元化綜合企業，於2003年成立在新北市汐止區，致力於提供全方位的資訊、硬體與貿易解決方案。
+            在資訊領域，我們專注於資訊軟體服務、資料處理及電子資訊供應，同時提供資訊軟體的批發與零售服務，協助企業進行數位轉型與流程自動化。
+          </p>
+
+          <p>
+            在硬體方面，我們累積了豐富的經驗，提供電腦設備與事務性機器的安裝、電器及儀器、儀表的安裝工程，以及電器相關的零售與批發服務。我們根據客戶需求，量身訂做硬體解決方案，確保系統穩定高效運作。
+          </p>
+          <br>
+
+          <p>
+            除此之外，我們業務範圍亦涵蓋電信業務門號代辦、企業經營管理顧問、國際貿易、一般廣告服務、產品與服飾設計，以及打字、影印等工商服務；在零售與批發方面，我們涉及服飾、日常用品、精密儀器、塑膠製品等多種商品，滿足市場多樣化需求。
+          </p>
+          <br>
+
+          <p>
+            本著精實創新與永續經營的理念，我們持續追求技術創新與服務品質的提升，力求成為客戶長期信賴的合作夥伴，與您共同迎向未來的挑戰與機遇。
+          </p>
+    </section>
+
+
+    <!-- 服務分類展示區 -->
+    <section class="services-section">
+        <h1>核心服務領域</h1>
+        <div class="category-grid">
+            <!-- 軟體服務分類 -->
+
+            <div class="category-card">
+                <img src="images/資訊科技與軟體服務 icon.png" class="category-image" alt="軟體服務">
+                <div class="category-content">
+                    <h3>資訊科技與軟體服務</h3>
+                    <ul>
+                        <li>人資系統</li>
+                        <li>資料庫建立</li>
+                        <li>網站架設</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 硬體解決方案分類 -->
+            <div class="category-card">
+                <img src="images/硬體設備與安裝 icon.png" class="category-image" alt="硬體方案">
+                <div class="category-content">
+                    <h3>硬體設備與安裝</h3>
+                    <ul>
+                        <li>事務性機器設備零售業</li>
+                        <li>電腦設備安裝業</li>
+                        <li>電器零售業</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- 軟體銷售與分銷分類 -->
+            <div class="category-card">
+                <img src="images/軟體銷售與分銷 icon.png" class="category-image" alt="硬體方案">
+                <div class="category-content">
+                    <h3>軟體銷售與分銷</h3>
+                    <ul>
+                        <li>資訊軟體批發業</li>
+                        <li>資訊軟體零售業</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 電信與通訊服務分類 -->
+            <div class="category-card">
+                <img src="images/電信與通訊服務 icon.png" class="category-image" alt="硬體方案">
+                <div class="category-content">
+                    <h3>電信與通訊服務</h3>
+                    <ul>
+                        <li>電信業務門號代辦業</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 企業顧問與管理分類 -->
+            <div class="category-card">
+                <img src="images/企業顧問與管理 icon.png" class="category-image" alt="硬體方案">
+                <div class="category-content">
+                    <h3>企業顧問與管理</h3>
+                    <ul>
+                        <li>企業經營管理顧問業</li>
+                    </ul>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+    <section class="contact-section">
+        <h1>聯絡我們</h1>
+    <p>聯絡人：潘先生</p>
+        <p>手機：0987654321</p>
+
+        <p>聯絡信箱：estone@gmail.com (為避免回信因各種情況而無法進一步聯繫來信時 <b>請務必留下連絡電話</b>)</p>
     
-</section>
+            <p>連絡電話：(02)1234-5678</p>
+    </section>    
 
 
-<!-- 業務分類區塊 -->
-<main class="max-w-7xl mx-auto px-6 py-20">
+
+
+    <section class="consult-section">
+        <h1>免費諮詢預約</h1>
+        <a href="https://forms.gle/ccgR9Rp8LnppWE8f9">
+            <button class="px-6 py-3  text-white bg-[#4BAAC8] rounded-lg shadow-md hover:bg-[#ADD8E6] focus:ring-2 focus:ring-blue-300">
+                諮詢客製化業務報價前請先點我填寫評估表        
+            </button>
+        </a>
+
+        <!-- <a class="btn btn-dark">諮詢軟體客製化報價前請先點我填寫評估表</a> -->
+    </section>
+
+
+
     
-    <!-- 資訊服務類 -->
-    <section id="software" class="mb-20 scroll-mt-24" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-8 ">資訊服務類</h2>
+    <script>
+        // 輪播控制邏輯
+        const slidesContainer = document.querySelector('.slides-container');
+        const slides = document.querySelectorAll('.slide');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+        const pagination = document.querySelector('.pagination');
+        
+        let currentIndex = 0;
+        const totalSlides = slides.length;
 
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4">資訊軟體服務業</h3>
-                <p class="text-gray-600">客製化系統開發、軟體生命周期管理、技術支援服務</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4">資料處理服務業</h3>
-                <p class="text-gray-600">大數據清洗分析、資料庫優化、AI模型訓練數據處理</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 硬體設備類 -->
-    <section id="hardware" class="mb-20 scroll-mt-24" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-8 ">硬體設備類</h2>
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4">電腦設備安裝業</h3>
-                <p class="text-gray-600">機房建置｜網路佈線｜伺服器架設</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4">事務性機器設備零售業</h3>
-                <p class="text-gray-600">商用印表機｜複合機｜專業級掃描設備</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4">電器零售業</h3>
-                <p class="text-gray-600">企業級電子設備｜節能家電解決方案</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 通訊服務類 -->
-    <section id="telecom" class="mb-20 scroll-mt-24" data-aos="fade-up">
-        <h2 class="text-3xl font-bold mb-8 ">通訊服務類</h2>
-        <div class="grid md:grid-cols-2 gap-8">
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4">電信業務門號代辦業</h3>
-                <p class="text-gray-600">企業門號批量申辦｜資費方案優化｜跨國通訊整合</p>
-            </div>
-            <div class="bg-white p-8 rounded-2xl shadow-lg">
-                <h3 class="text-xl font-bold mb-4">電子資訊供應服務業</h3>
-                <p class="text-gray-600">物聯網解決方案｜5G應用整合｜智慧城市系統</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- 其他保留區塊（客戶案例、聯絡表單等） -->
-    <!-- ... 先前提供的客戶案例輪播、聯絡表單等代碼 ... -->
-
-</main>
-
-<!-- 腳注 -->
-<footer class="bg-gray-800 text-white py-12">
-    <div class="max-w-7xl mx-auto px-6 text-center">
-        <p class="mb-4">© 2024 伊斯頓資訊企業社 版權所有</p>
-        <div class="flex justify-center space-x-6">
-            <a href="#" class="hover:text-blue-400">隱私權政策</a>
-            <a href="#" class="hover:text-blue-400">服務條款</a>
-            <a href="#" class="hover:text-blue-400">人才招募</a>
-        </div>
-    </div>
-</footer>
-
-<!-- 腳本 -->
-<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script>
-
-// 初始化 Swiper 輪播
-const serviceSwiper = new Swiper('.swiper-container', {
-    slidesPerView: 3,  // Default: Shows 3 cards
-    spaceBetween: 20,   // Spacing between items
-    loop: true,         // Infinite loop
-    navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev'
-    },
-    breakpoints: {
-        768: { 
-            slidesPerView: 3  // Displays 3 cards for tablets and above
-        },
-        480: { 
-            slidesPerView: 1  // Displays 1 card for phones
-        }
-    },
-    effect: 'coverflow', // Apply coverflow effect
-    coverflowEffect: {
-        rotate: 30,        // Angle of rotation
-        slideShadows: false
-    }
-});
-
-    // 初始化 AOS 滾動動畫
-    AOS.init({ duration: 800, once: true });
-
-        // 導航欄滾動效果
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('nav-shadow');
-            } else {
-                nav.classList.remove('nav-shadow');
-            }
+        // 初始化分頁指示器
+        slides.forEach((_, index) => {
+            const dot = document.createElement('div');
+            dot.classList.add('pagination-dot');
+            dot.addEventListener('click', () => goToSlide(index));
+            pagination.appendChild(dot);
         });
 
-        
-</script>
+        function updatePagination() {
+            document.querySelectorAll('.pagination-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
 
+        function goToSlide(index) {
+            currentIndex = (index + totalSlides) % totalSlides;
+            slidesContainer.style.transform = `translateX(-${currentIndex * 100}%)`;
+            updatePagination();
+        }
+
+        function nextSlide() {
+            goToSlide(currentIndex + 1);
+        }
+
+        function prevSlide() {
+            goToSlide(currentIndex - 1);
+        }
+
+        // 自動輪播
+        let autoPlay = setInterval(nextSlide, 5000);
+
+        // 事件監聽
+        nextButton.addEventListener('click', () => {
+            clearInterval(autoPlay);
+            nextSlide();
+            autoPlay = setInterval(nextSlide, 5000);
+        });
+
+        prevButton.addEventListener('click', () => {
+            clearInterval(autoPlay);
+            prevSlide();
+            autoPlay = setInterval(nextSlide, 5000);
+        });
+
+        // 初始化
+        updatePagination();
+    </script>
 </body>
 </html>
