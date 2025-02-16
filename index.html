@@ -564,19 +564,19 @@
         }
 
         // 自動輪播
-        let autoPlay = setInterval(nextSlide, 5000);
+        let autoPlay = setInterval(nextSlide, 2500);
 
         // 事件監聽
         nextButton.addEventListener('click', () => {
             clearInterval(autoPlay);
             nextSlide();
-            autoPlay = setInterval(nextSlide, 5000);
+            autoPlay = setInterval(nextSlide, 2500);
         });
 
         prevButton.addEventListener('click', () => {
             clearInterval(autoPlay);
             prevSlide();
-            autoPlay = setInterval(nextSlide, 5000);
+            autoPlay = setInterval(nextSlide, 2500);
         });
 
         // 初始化
